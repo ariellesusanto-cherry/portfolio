@@ -1,274 +1,1187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Arielle K. Susanto — MPH candidate at UC Berkeley building AI tools for healthcare operations.">
-    <meta name="author" content="Arielle K. Susanto">
-    <title>Arielle K. Susanto — Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arielle Susanto — Healthcare × AI</title>
+<meta name="description" content="MPH candidate at UC Berkeley building AI tools for healthcare operations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F4F2EC;
+    --bg-elev: #FBF9F4;
+    --ink: #0E1218;
+    --ink-soft: #3A3D44;
+    --muted: #8C8A82;
+    --accent: #14513F;
+    --accent-soft: #1A6850;
+    --accent-tint: rgba(20, 81, 63, 0.06);
+    --rule: rgba(14, 18, 24, 0.10);
+    --rule-strong: rgba(14, 18, 24, 0.18);
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: 'Schibsted Grotesk', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --container: 1240px;
+    --grid-gutter: 32px;
+  }
 
-    <!--
-        ASSETS NOTE FOR ARIELLE
-        ───────────────────────
-        Drop these files into the /assets/ folder when ready:
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-          • resume.pdf            → linked from the hero "Resume" link and the Contact section
-          • health-canopy.png     → optional screenshot for Project 01
-          • provider-connect.png  → optional screenshot for Project 02
+  html { scroll-behavior: smooth; }
 
-        After dropping screenshots, uncomment the <img> tag inside each
-        .project-media block (search "REPLACE PLACEHOLDER") and the placeholder
-        block will be hidden automatically.
-    -->
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  /* Subtle grid background overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, var(--rule) 1px, transparent 1px);
+    background-size: calc(100vw / 12) 100%;
+    background-position: center;
+    pointer-events: none;
+    opacity: 0.4;
+    z-index: 0;
+    max-width: var(--container);
+    margin: 0 auto;
+    inset: 0 auto 0 50%;
+    transform: translateX(-50%);
+    width: min(var(--container), 100vw - 48px);
+  }
 
-    <link rel="stylesheet" href="styles.css">
+  ::selection { background: var(--accent); color: var(--bg); }
+
+  a { color: inherit; text-decoration: none; }
+
+  .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ============ NAV ============ */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    background: rgba(244, 242, 236, 0.78);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .nav-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-logo::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    transition: color 0.2s ease;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-cta {
+    font-family: var(--mono);
+    font-size: 11px !important;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border: 1px solid var(--ink);
+    color: var(--ink) !important;
+    transition: all 0.2s ease;
+  }
+
+  .nav-cta:hover {
+    background: var(--ink);
+    color: var(--bg) !important;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    padding: 140px 0 100px;
+    position: relative;
+  }
+
+  .meta-strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 16px;
+    margin-bottom: 64px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent);
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 var(--accent);
+    animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  @keyframes ping {
+    0% { box-shadow: 0 0 0 0 rgba(20, 81, 63, 0.5); }
+    70% { box-shadow: 0 0 0 8px rgba(20, 81, 63, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(20, 81, 63, 0); }
+  }
+
+  .hero-headline {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: clamp(48px, 8vw, 112px);
+    line-height: 0.96;
+    letter-spacing: -0.035em;
+    color: var(--ink);
+    margin-bottom: 40px;
+    max-width: 1100px;
+  }
+
+  .hero-headline em {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--accent);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 80px;
+    margin-top: 80px;
+    align-items: end;
+  }
+
+  .hero-lede {
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 520px;
+    font-weight: 400;
+  }
+
+  .hero-lede em {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  .currently-card {
+    border-top: 1px solid var(--rule-strong);
+    padding-top: 24px;
+  }
+
+  .kv-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+
+  .kv-row:last-child { border-bottom: none; }
+
+  .kv-key {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .kv-val {
+    font-size: 15px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .kv-val .sub {
+    color: var(--muted);
+    font-weight: 400;
+    font-size: 13px;
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* ============ SECTION HEADERS ============ */
+  section {
+    padding: 100px 0;
+    position: relative;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 48px;
+  }
+
+  .section-label .num {
+    color: var(--accent);
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .section-title {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 56px;
+    max-width: 900px;
+  }
+
+  .section-title em {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+
+  /* ============ ABOUT ============ */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+
+  .about-prose p {
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+    max-width: 520px;
+  }
+
+  .about-prose p strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule-strong);
+    border: 1px solid var(--rule-strong);
+  }
+
+  .stat {
+    background: var(--bg);
+    padding: 28px 24px;
+  }
+
+  .stat-num {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 44px;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 8px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stat-num em {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* ============ WORK ============ */
+  .work-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .project {
+    background: var(--bg-elev);
+    border: 1px solid var(--rule);
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 80px 1.3fr 1fr;
+    gap: 40px;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+    position: relative;
+  }
+
+  .project:hover {
+    border-color: var(--ink);
+  }
+
+  .project-num {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .project-content h3 {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 32px;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+
+  .project-tagline {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--accent);
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+
+  .project-desc {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+  }
+
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 28px;
+  }
+
+  .chip {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    background: var(--accent-tint);
+    color: var(--accent);
+    border-radius: 2px;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .link {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .link:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  .link.muted {
+    color: var(--muted);
+    border-bottom-color: var(--rule-strong);
+    cursor: not-allowed;
+  }
+
+  .project-visual {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 220px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Health Canopy mock */
+  .mock-canopy {
+    width: 100%;
+    font-family: var(--mono);
+    font-size: 10px;
+  }
+
+  .mock-canopy .row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .mock-canopy .row:last-child { border: none; }
+
+  .mock-canopy .sku {
+    color: var(--muted);
+    width: 56px;
+    flex-shrink: 0;
+  }
+
+  .mock-canopy .bar-wrap {
+    flex: 1;
+    height: 4px;
+    background: var(--rule);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .mock-canopy .bar {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  .mock-canopy .bar.warn { background: #C97A2C; }
+  .mock-canopy .bar.crit { background: #B53D2E; }
+
+  .mock-canopy .pct {
+    width: 36px;
+    text-align: right;
+    color: var(--ink);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .mock-canopy-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 12px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid var(--rule-strong);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* Provider Connect mock */
+  .mock-pc {
+    width: 100%;
+    font-family: var(--mono);
+    font-size: 10px;
+  }
+
+  .mock-pc-card {
+    background: var(--bg-elev);
+    border: 1px solid var(--rule);
+    padding: 14px;
+    margin-bottom: 8px;
+    border-radius: 3px;
+  }
+
+  .mock-pc-card.locked {
+    opacity: 0.4;
+    background: repeating-linear-gradient(45deg, var(--bg-elev), var(--bg-elev) 4px, var(--rule) 4px, var(--rule) 5px);
+  }
+
+  .mock-pc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .mock-pc-title {
+    font-size: 11px;
+    color: var(--ink);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .mock-pc-role {
+    font-size: 8px;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 2px 6px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .mock-pc-role.locked-role {
+    background: var(--muted);
+  }
+
+  .mock-pc-content {
+    font-size: 9px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  .mock-pc-content .redacted {
+    background: var(--ink-soft);
+    color: var(--ink-soft);
+    border-radius: 1px;
+    user-select: none;
+  }
+
+  /* ============ EXPERIENCE ============ */
+  .exp-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .exp-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+    gap: 32px;
+    padding: 28px 0;
+    border-top: 1px solid var(--rule-strong);
+    align-items: baseline;
+    transition: padding 0.25s ease;
+  }
+
+  .exp-row:hover {
+    padding-left: 16px;
+  }
+
+  .exp-row:last-child {
+    border-bottom: 1px solid var(--rule-strong);
+  }
+
+  .exp-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .exp-main h4 {
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .exp-role {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--accent);
+    font-size: 17px;
+  }
+
+  .exp-loc {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    text-align: right;
+    letter-spacing: 0.04em;
+  }
+
+  /* ============ CONTACT ============ */
+  .contact {
+    border-top: 1px solid var(--rule-strong);
+    padding: 120px 0 60px;
+  }
+
+  .contact-headline {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: clamp(40px, 6.5vw, 88px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 56px;
+    max-width: 1000px;
+  }
+
+  .contact-headline em {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+
+  .contact-headline a {
+    border-bottom: 3px solid var(--ink);
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .contact-headline a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    border-top: 1px solid var(--rule);
+    padding-top: 32px;
+  }
+
+  .contact-item .label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .contact-item .value {
+    font-size: 16px;
+    color: var(--ink);
+  }
+
+  .contact-item .value a {
+    border-bottom: 1px solid var(--rule-strong);
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .contact-item .value a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 24px 0;
+  }
+
+  .footer-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 880px) {
+    .nav-links { gap: 16px; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    .hero { padding: 100px 0 60px; }
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin-top: 48px;
+    }
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .project {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 28px;
+    }
+    .project-num { font-size: 11px; }
+    .exp-row {
+      grid-template-columns: 1fr;
+      gap: 6px;
+      padding: 20px 0;
+    }
+    .exp-row:hover { padding-left: 0; }
+    .exp-loc { text-align: left; }
+    .contact-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .stat-grid { grid-template-columns: 1fr; }
+    section { padding: 64px 0; }
+    .meta-strip { font-size: 9px; }
+  }
+
+  @media (max-width: 480px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ============ ANIMATIONS ============ */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.9s cubic-bezier(0.2, 0.65, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.35s; }
+  .delay-4 { animation-delay: 0.5s; }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s cubic-bezier(0.2, 0.65, 0.3, 1), transform 0.8s cubic-bezier(0.2, 0.65, 0.3, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
 </head>
 <body>
-    <div class="grain-overlay" aria-hidden="true"></div>
 
-    <header class="nav" id="top-nav">
-        <div class="nav-inner">
-            <a href="#top" class="nav-mark" aria-label="Top of page">A.K.S</a>
-            <nav class="nav-links" aria-label="Primary">
-                <a href="#work">Work</a>
-                <a href="#experience">Experience</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
-            </nav>
+<!-- ================ NAV ================ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo">A. Susanto</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+      <a href="./Arielle_Susanto_Resume.pdf" class="nav-cta" target="_blank">Resume ↗</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ================ HERO ================ -->
+<section class="hero" id="top">
+  <div class="container">
+    <div class="meta-strip fade-up">
+      <span class="status-pill">
+        <span class="status-dot"></span>
+        Available for Summer 2026 internships
+      </span>
+      <span>Berkeley, California</span>
+      <span>Updated April 2026</span>
+    </div>
+
+    <h1 class="hero-headline fade-up delay-1">
+      I build <em>AI tools</em> for<br>healthcare operations.
+    </h1>
+
+    <div class="hero-grid">
+      <p class="hero-lede fade-up delay-2">
+        MPH candidate at UC Berkeley working at the <em>intersection of healthcare and AI</em>. I prototype agentic systems and operational platforms that reduce administrative burden for clinicians and health systems.
+      </p>
+
+      <div class="currently-card fade-up delay-3">
+        <div class="kv-row">
+          <span class="kv-key">Currently</span>
+          <span class="kv-val">
+            Blue Shield of California
+            <span class="sub">Graduate Consultant — Agentic AI Strategy</span>
+          </span>
         </div>
-    </header>
-
-    <main id="top">
-
-        <!-- ─────────── HERO ─────────── -->
-        <section class="hero">
-            <div class="container">
-                <div class="hero-badge reveal">
-                    <span class="dot" aria-hidden="true"></span>
-                    <span>Available · Summer 2026 internships</span>
-                </div>
-
-                <h1 class="hero-name reveal" style="--delay: 80ms">
-                    Arielle K.<br>Susanto<span class="period">.</span>
-                </h1>
-
-                <p class="hero-lede reveal" style="--delay: 160ms">
-                    MPH candidate at UC Berkeley (Health Policy &amp; Management) building <em>thoughtful AI tools</em> for healthcare operations.
-                </p>
-
-                <div class="hero-meta reveal" style="--delay: 240ms">
-                    <span class="hero-meta-item"><span class="meta-label">Based in</span> Berkeley, CA</span>
-                    <span class="meta-divider" aria-hidden="true">·</span>
-                    <a href="mailto:ariellesusanto@berkeley.edu" class="meta-link">ariellesusanto@berkeley.edu</a>
-                    <span class="meta-divider" aria-hidden="true">·</span>
-                    <a href="assets/resume.pdf" class="meta-link" download>Resume <span class="arrow">↓</span></a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ─────────── 00 / CURRENTLY ─────────── -->
-        <!--  Easy-to-update block. Edit the <li> items below as your roles change.  -->
-        <section class="section currently" id="currently">
-            <div class="container section-grid">
-                <div class="section-head">
-                    <span class="section-num">00 / Currently</span>
-                </div>
-                <div class="section-body">
-                    <ul class="currently-list">
-                        <li class="reveal">
-                            <span class="bullet" aria-hidden="true">→</span>
-                            <span>Consulting at <strong>Blue Shield of California</strong> on agentic AI strategy.</span>
-                        </li>
-                        <li class="reveal" style="--delay: 80ms">
-                            <span class="bullet" aria-hidden="true">→</span>
-                            <span>Graduate analyst at <strong>Institute on Aging</strong> — ECM evaluation in the CalAIM context.</span>
-                        </li>
-                        <li class="reveal" style="--delay: 160ms">
-                            <span class="bullet" aria-hidden="true">→</span>
-                            <span>MPH at <strong>UC Berkeley</strong>, Health Policy &amp; Management.</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- ─────────── 01 / WORK ─────────── -->
-        <section class="section work" id="work">
-            <div class="container section-grid">
-                <div class="section-head">
-                    <span class="section-num">01 / Work</span>
-                </div>
-                <div class="section-body">
-                    <h2 class="section-title">
-                        Selected projects, built around <em>real operational gaps</em> in healthcare delivery.
-                    </h2>
-                </div>
-            </div>
-
-            <div class="container">
-                <div class="projects">
-
-                    <!-- Project 01 — Health Canopy -->
-                    <article class="project reveal">
-                        <a href="https://www.loom.com/share/c847759dd67349b58465ef661641ea86" target="_blank" rel="noopener" class="project-media" aria-label="Health Canopy — watch demo">
-                            <div class="placeholder placeholder-grid">
-                                <span class="placeholder-label">Health Canopy / 01</span>
-                                <span class="placeholder-status">Working prototype</span>
-                            </div>
-                            <!-- REPLACE PLACEHOLDER: uncomment when you drop the screenshot in
-                            <img src="assets/health-canopy.png" alt="Health Canopy interface">
-                            -->
-                        </a>
-                        <div class="project-info">
-                            <span class="eyebrow">01 — Healthcare operations</span>
-                            <h3 class="project-title">Health Canopy</h3>
-                            <p class="project-desc">
-                                AI platform for hospital inventory optimization. End-to-end prototype combining predictive analytics, real-time inventory visibility, and automated reorder recommendations — built to address <em>waste and stockouts</em> in hospital supply chains.
-                            </p>
-                            <ul class="tags">
-                                <li>AI agents</li>
-                                <li>Predictive models</li>
-                                <li>Healthcare ops</li>
-                            </ul>
-                            <div class="project-links">
-                                <a href="https://www.loom.com/share/c847759dd67349b58465ef661641ea86" target="_blank" rel="noopener" class="project-link">Watch demo <span class="arrow">↗</span></a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Project 02 — Provider Connect -->
-                    <article class="project reveal" style="--delay: 100ms">
-                        <a href="#" class="project-media" aria-label="Provider Connect — open project">
-                            <div class="placeholder placeholder-stack">
-                                <span class="placeholder-label">Provider Connect / 02</span>
-                                <span class="placeholder-status">Interactive prototype</span>
-                            </div>
-                            <!-- REPLACE PLACEHOLDER: uncomment when you drop the screenshot in
-                            <img src="assets/provider-connect.png" alt="Provider Connect interface">
-                            -->
-                        </a>
-                        <div class="project-info">
-                            <span class="eyebrow">02 — Care coordination</span>
-                            <h3 class="project-title">Provider Connect</h3>
-                            <p class="project-desc">
-                                Shared patient summary for multidisciplinary care teams. Interactive React prototype with role-based access controls and patient consent — each practitioner sees the <em>role-appropriate slice</em> of a patient's clinical picture. Originally built for the Heidi Health Entry Program.
-                            </p>
-                            <ul class="tags">
-                                <li>React</li>
-                                <li>Role-based access</li>
-                                <li>Patient consent</li>
-                            </ul>
-                            <div class="project-links">
-                                <a href="#" class="project-link">Live demo <span class="arrow">→</span></a>
-                                <a href="#" class="project-link">Loom walkthrough <span class="arrow">↗</span></a>
-                            </div>
-                        </div>
-                    </article>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- ─────────── 02 / EXPERIENCE ─────────── -->
-        <section class="section experience" id="experience">
-            <div class="container section-grid">
-                <div class="section-head">
-                    <span class="section-num">02 / Experience</span>
-                </div>
-                <div class="section-body">
-                    <h2 class="section-title">
-                        Working across <em>policy, research, and accreditation</em>.
-                    </h2>
-                </div>
-            </div>
-
-            <div class="container">
-                <ul class="exp-list">
-                    <li class="exp-row reveal">
-                        <span class="exp-date">Present</span>
-                        <div class="exp-detail">
-                            <h3 class="exp-role">Agentic AI Strategy Consultant</h3>
-                            <span class="exp-org">Blue Shield of California</span>
-                            <p class="exp-desc">Advising on agentic AI strategy across operations and member experience.</p>
-                        </div>
-                    </li>
-                    <li class="exp-row reveal" style="--delay: 80ms">
-                        <span class="exp-date">Present</span>
-                        <div class="exp-detail">
-                            <h3 class="exp-role">Graduate Analyst</h3>
-                            <span class="exp-org">Institute on Aging</span>
-                            <p class="exp-desc">ECM (Enhanced Care Management) evaluation work in the CalAIM context — Medi-Cal's whole-person care initiative.</p>
-                        </div>
-                    </li>
-                    <li class="exp-row reveal" style="--delay: 160ms">
-                        <span class="exp-date">—</span>
-                        <div class="exp-detail">
-                            <h3 class="exp-role">Research Affiliate</h3>
-                            <span class="exp-org">Apte Research Group · UC Berkeley</span>
-                            <p class="exp-desc">Public-health research at the intersection of policy and applied analytics.</p>
-                        </div>
-                    </li>
-                    <li class="exp-row reveal" style="--delay: 240ms">
-                        <span class="exp-date">—</span>
-                        <div class="exp-detail">
-                            <h3 class="exp-role">JCI Accreditation</h3>
-                            <span class="exp-org">Siloam Cancer Hospital · Indonesia</span>
-                            <p class="exp-desc">Supported Joint Commission International accreditation across clinical and operational standards.</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- ─────────── 03 / ABOUT ─────────── -->
-        <section class="section about" id="about">
-            <div class="container section-grid">
-                <div class="section-head">
-                    <span class="section-num">03 / About</span>
-                </div>
-                <div class="section-body">
-                    <p class="about-body reveal">
-                        I'm a public-health graduate student building software at the seam between clinical workflow, policy, and emerging AI. My work tends to start with <em>the operational gaps no one wants to own</em> — supply chains, care coordination, accreditation paperwork — and asks what changes when an interface, a model, or an agent gets dropped into them.
-                    </p>
-                    <p class="about-body reveal" style="--delay: 80ms">
-                        Before Berkeley, I worked on JCI accreditation at a cancer hospital in Indonesia. Now I split time between Blue Shield of California, the Institute on Aging, and a few prototypes of my own.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ─────────── 04 / CONTACT ─────────── -->
-        <section class="section contact" id="contact">
-            <div class="container section-grid">
-                <div class="section-head">
-                    <span class="section-num">04 / Contact</span>
-                </div>
-                <div class="section-body">
-                    <h2 class="contact-line reveal">
-                        Working on something at the intersection of <em>healthcare operations</em> and AI?<br>
-                        <a href="mailto:ariellesusanto@berkeley.edu" class="contact-email">ariellesusanto@berkeley.edu <span class="arrow">↗</span></a>
-                    </h2>
-                    <ul class="contact-meta reveal" style="--delay: 80ms">
-                        <li><span class="meta-label">LinkedIn</span> <a href="https://linkedin.com/in/ariellesusanto" target="_blank" rel="noopener">linkedin.com/in/ariellesusanto</a></li>
-                        <li><span class="meta-label">Location</span> Berkeley, California</li>
-                        <li><span class="meta-label">Resume</span> <a href="assets/resume.pdf" download>Download PDF ↓</a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container footer-inner">
-            <span>© 2026 Arielle K. Susanto</span>
-            <span class="footer-mono">Built in Berkeley · MMXXVI</span>
+        <div class="kv-row">
+          <span class="kv-key">Studying</span>
+          <span class="kv-val">
+            UC Berkeley — MPH
+            <span class="sub">Health Policy & Management · 2027</span>
+          </span>
         </div>
-    </footer>
+        <div class="kv-row">
+          <span class="kv-key">Focus</span>
+          <span class="kv-val">
+            Payer ops · Care coordination · Agentic AI
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script src="script.js"></script>
+<!-- ================ ABOUT ================ -->
+<section id="about">
+  <div class="container">
+    <div class="section-label reveal">
+      <span class="num">01</span><span>About</span>
+    </div>
+
+    <h2 class="section-title reveal">
+      Healthcare's <em>$500B admin problem</em><br>is the one I want to solve.
+    </h2>
+
+    <div class="about-grid">
+      <div class="about-prose reveal">
+        <p>
+          I move fluently between healthcare strategy and hands-on prototyping. <strong>I read the operational reality of a workflow first</strong> — what clinicians actually do, where information breaks down, what system constraints get in the way — then design around it.
+        </p>
+        <p>
+          My current work spans <strong>payer-side AI strategy</strong> at Blue Shield of California, <strong>care delivery evaluation</strong> at the Institute on Aging, and independent prototyping of AI tools for hospital operations.
+        </p>
+        <p>
+          Before grad school: undergrad public health at Berkeley, with a global poverty minor. Originally from Indonesia, where I worked on JCI accreditation at Siloam Cancer Hospital.
+        </p>
+      </div>
+
+      <div class="stat-grid reveal">
+        <div class="stat">
+          <div class="stat-num">2<em>x</em></div>
+          <div class="stat-label">Active healthcare<br>engagements</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Working AI<br>prototypes shipped</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">10<span style="color: var(--muted)">+</span></div>
+          <div class="stat-label">AI use cases<br>evaluated for payer ops</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">4</div>
+          <div class="stat-label">Healthcare orgs<br>worked with</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ WORK ================ -->
+<section id="work">
+  <div class="container">
+    <div class="section-label reveal">
+      <span class="num">02</span><span>Selected Work</span>
+    </div>
+
+    <h2 class="section-title reveal">
+      Prototypes built to test <em>real operational problems</em>.
+    </h2>
+
+    <div class="work-list">
+
+      <!-- PROJECT 01 -->
+      <article class="project reveal">
+        <div class="project-num">PRJ / 01</div>
+        <div class="project-content">
+          <h3>Health Canopy</h3>
+          <div class="project-tagline">AI platform for hospital inventory optimization</div>
+          <p class="project-desc">
+            End-to-end AI prototype for hospital supply chain operations: predictive analytics, real-time inventory visibility, and automated reorder recommendations. Built to address waste and stockout patterns that cost health systems millions annually.
+          </p>
+          <div class="chip-row">
+            <span class="chip">Predictive Analytics</span>
+            <span class="chip">Supply Chain</span>
+            <span class="chip">Hospital Ops</span>
+            <span class="chip">AI Agents</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="link">Live demo →</a>
+            <a href="#" class="link">Case study →</a>
+          </div>
+        </div>
+        <div class="project-visual" aria-hidden="true">
+          <div class="mock-canopy">
+            <div class="mock-canopy-header">
+              <span>SKU</span><span>STOCK</span>
+            </div>
+            <div class="row">
+              <span class="sku">SAL-09K</span>
+              <div class="bar-wrap"><div class="bar" style="width: 78%"></div></div>
+              <span class="pct">78%</span>
+            </div>
+            <div class="row">
+              <span class="sku">GLV-31N</span>
+              <div class="bar-wrap"><div class="bar warn" style="width: 34%"></div></div>
+              <span class="pct">34%</span>
+            </div>
+            <div class="row">
+              <span class="sku">SYR-10ML</span>
+              <div class="bar-wrap"><div class="bar" style="width: 92%"></div></div>
+              <span class="pct">92%</span>
+            </div>
+            <div class="row">
+              <span class="sku">MSK-N95</span>
+              <div class="bar-wrap"><div class="bar crit" style="width: 12%"></div></div>
+              <span class="pct">12%</span>
+            </div>
+            <div class="row">
+              <span class="sku">CTR-IV</span>
+              <div class="bar-wrap"><div class="bar" style="width: 64%"></div></div>
+              <span class="pct">64%</span>
+            </div>
+            <div class="row">
+              <span class="sku">GAU-04C</span>
+              <div class="bar-wrap"><div class="bar warn" style="width: 41%"></div></div>
+              <span class="pct">41%</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 02 -->
+      <article class="project reveal">
+        <div class="project-num">PRJ / 02</div>
+        <div class="project-content">
+          <h3>Provider Connect</h3>
+          <div class="project-tagline">Shared patient summary for multidisciplinary care</div>
+          <p class="project-desc">
+            Interactive React prototype giving each practitioner a role-appropriate view of a patient's clinical picture across multidisciplinary care teams. Built around role-based access controls and patient consent — keeping coordination tight without exposing sensitive information unnecessarily.
+          </p>
+          <div class="chip-row">
+            <span class="chip">React</span>
+            <span class="chip">RBAC</span>
+            <span class="chip">Care Coordination</span>
+            <span class="chip">Privacy</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="link">Live demo →</a>
+            <a href="#" class="link">Loom walkthrough →</a>
+          </div>
+        </div>
+        <div class="project-visual" aria-hidden="true">
+          <div class="mock-pc" style="width: 100%;">
+            <div class="mock-pc-card">
+              <div class="mock-pc-header">
+                <span class="mock-pc-title">Vitals & Triage</span>
+                <span class="mock-pc-role">Nurse</span>
+              </div>
+              <div class="mock-pc-content">
+                BP 128/82 · HR 76 · SpO₂ 98% · Temp 98.4°F
+              </div>
+            </div>
+            <div class="mock-pc-card">
+              <div class="mock-pc-header">
+                <span class="mock-pc-title">Care Plan</span>
+                <span class="mock-pc-role">SW</span>
+              </div>
+              <div class="mock-pc-content">
+                Housing follow-up scheduled · Transport secured for Thu visit
+              </div>
+            </div>
+            <div class="mock-pc-card locked">
+              <div class="mock-pc-header">
+                <span class="mock-pc-title">Mental Health Notes</span>
+                <span class="mock-pc-role locked-role">🔒 PHI</span>
+              </div>
+              <div class="mock-pc-content">
+                <span class="redacted">██████ █████ ████████ ██████ ███ ████ ██████</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================ EXPERIENCE ================ -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label reveal">
+      <span class="num">03</span><span>Experience</span>
+    </div>
+
+    <h2 class="section-title reveal">
+      Where I've been <em>doing the work</em>.
+    </h2>
+
+    <div class="exp-list">
+      <div class="exp-row reveal">
+        <div class="exp-date">Feb 2026 — Now</div>
+        <div class="exp-main">
+          <h4>Blue Shield of California</h4>
+          <div class="exp-role">Graduate Consultant — Agentic AI Strategy</div>
+        </div>
+        <div class="exp-loc">Oakland, CA</div>
+      </div>
+
+      <div class="exp-row reveal">
+        <div class="exp-date">Feb 2026 — Now</div>
+        <div class="exp-main">
+          <h4>Institute on Aging</h4>
+          <div class="exp-role">Graduate Analyst — ECM Evaluation</div>
+        </div>
+        <div class="exp-loc">San Francisco, CA</div>
+      </div>
+
+      <div class="exp-row reveal">
+        <div class="exp-date">Mar — Aug 2025</div>
+        <div class="exp-main">
+          <h4>Apte Research Group, UC Berkeley</h4>
+          <div class="exp-role">Research Assistant</div>
+        </div>
+        <div class="exp-loc">Berkeley, CA</div>
+      </div>
+
+      <div class="exp-row reveal">
+        <div class="exp-date">Jun — Aug 2024</div>
+        <div class="exp-main">
+          <h4>Siloam Cancer Hospital</h4>
+          <div class="exp-role">Health & Safety Intern (JCI Accreditation)</div>
+        </div>
+        <div class="exp-loc">Indonesia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ CONTACT ================ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-label reveal">
+      <span class="num">04</span><span>Contact</span>
+    </div>
+
+    <h2 class="contact-headline reveal">
+      Building something at the <em>intersection of healthcare and AI</em>?<br>
+      <a href="mailto:ariellesusanto@berkeley.edu">Let's talk →</a>
+    </h2>
+
+    <div class="contact-grid reveal">
+      <div class="contact-item">
+        <div class="label">Email</div>
+        <div class="value">
+          <a href="mailto:ariellesusanto@berkeley.edu">ariellesusanto@berkeley.edu</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="label">LinkedIn</div>
+        <div class="value">
+          <a href="https://www.linkedin.com/in/ariellesusanto" target="_blank">/in/ariellesusanto</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="label">Resume</div>
+        <div class="value">
+          <a href="./Arielle_Susanto_Resume.pdf" target="_blank">Download PDF ↓</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="label">Location</div>
+        <div class="value">Berkeley, California</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ FOOTER ================ -->
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Arielle K. Susanto</span>
+    <span>Designed & built by hand · v1.0</span>
+  </div>
+</footer>
+
+<script>
+  // Reveal-on-scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>
+
 </body>
 </html>
