@@ -7,271 +7,176 @@
 <meta name="description" content="MPH candidate at UC Berkeley building AI tools for healthcare operations.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Schibsted+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #F4F2EC;
-    --bg-elev: #FBF9F4;
-    --ink: #0E1218;
-    --ink-soft: #3A3D44;
-    --muted: #8C8A82;
+    --ink: #14181F;
+    --ink-soft: #4A4D54;
+    --muted: #908E86;
     --accent: #14513F;
-    --accent-soft: #1A6850;
-    --accent-tint: rgba(20, 81, 63, 0.06);
-    --rule: rgba(14, 18, 24, 0.10);
-    --rule-strong: rgba(14, 18, 24, 0.18);
+    --rule: rgba(20, 24, 31, 0.10);
+    --rule-strong: rgba(20, 24, 31, 0.20);
     --serif: 'Instrument Serif', Georgia, serif;
-    --sans: 'Schibsted Grotesk', system-ui, -apple-system, sans-serif;
+    --sans: 'Schibsted Grotesk', system-ui, sans-serif;
     --mono: 'JetBrains Mono', ui-monospace, monospace;
-    --container: 1240px;
-    --grid-gutter: 32px;
+    --col: 1080px;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
 
   body {
     background: var(--bg);
     color: var(--ink);
     font-family: var(--sans);
+    line-height: 1.55;
     font-weight: 400;
-    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
   }
 
-  /* Subtle grid background overlay */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(to right, var(--rule) 1px, transparent 1px);
-    background-size: calc(100vw / 12) 100%;
-    background-position: center;
-    pointer-events: none;
-    opacity: 0.4;
-    z-index: 0;
-    max-width: var(--container);
-    margin: 0 auto;
-    inset: 0 auto 0 50%;
-    transform: translateX(-50%);
-    width: min(var(--container), 100vw - 48px);
-  }
-
   ::selection { background: var(--accent); color: var(--bg); }
-
   a { color: inherit; text-decoration: none; }
+  ul, ol { list-style: none; }
 
-  .container {
-    max-width: var(--container);
+  .wrap {
+    max-width: var(--col);
     margin: 0 auto;
-    padding: 0 24px;
-    position: relative;
-    z-index: 1;
+    padding: 0 32px;
   }
 
-  /* ============ NAV ============ */
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    backdrop-filter: blur(20px) saturate(140%);
-    -webkit-backdrop-filter: blur(20px) saturate(140%);
-    background: rgba(244, 242, 236, 0.78);
-    border-bottom: 1px solid var(--rule);
+  /* ============ TOP BAR ============ */
+  .topbar {
+    padding: 28px 0 0;
   }
 
-  .nav-inner {
-    max-width: var(--container);
+  .topbar-inner {
+    max-width: var(--col);
     margin: 0 auto;
-    padding: 14px 24px;
+    padding: 0 32px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-  }
-
-  .nav-logo {
-    font-family: var(--mono);
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .nav-logo::before {
-    content: '';
-    width: 8px;
-    height: 8px;
-    background: var(--accent);
-    border-radius: 50%;
-    animation: pulse 2.4s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.85); }
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 28px;
-    align-items: center;
-  }
-
-  .nav-links a {
+    align-items: baseline;
     font-family: var(--mono);
     font-size: 11px;
-    font-weight: 500;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--ink-soft);
+    color: var(--muted);
+  }
+
+  .topbar-name { color: var(--ink); }
+
+  .topbar-right {
+    display: flex;
+    gap: 28px;
+  }
+
+  .topbar-right a {
     transition: color 0.2s ease;
   }
-
-  .nav-links a:hover { color: var(--accent); }
-
-  .nav-cta {
-    font-family: var(--mono);
-    font-size: 11px !important;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 8px 14px;
-    border: 1px solid var(--ink);
-    color: var(--ink) !important;
-    transition: all 0.2s ease;
-  }
-
-  .nav-cta:hover {
-    background: var(--ink);
-    color: var(--bg) !important;
-  }
+  .topbar-right a:hover { color: var(--accent); }
 
   /* ============ HERO ============ */
   .hero {
-    padding: 140px 0 100px;
-    position: relative;
-  }
-
-  .meta-strip {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+    padding: 12vh 0 12vh;
     border-bottom: 1px solid var(--rule);
-    padding-bottom: 16px;
-    margin-bottom: 64px;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  .status-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--accent);
-  }
-
-  .status-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 0 0 var(--accent);
-    animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-  }
-
-  @keyframes ping {
-    0% { box-shadow: 0 0 0 0 rgba(20, 81, 63, 0.5); }
-    70% { box-shadow: 0 0 0 8px rgba(20, 81, 63, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(20, 81, 63, 0); }
-  }
-
-  .hero-headline {
-    font-family: var(--sans);
-    font-weight: 500;
-    font-size: clamp(48px, 8vw, 112px);
-    line-height: 0.96;
-    letter-spacing: -0.035em;
-    color: var(--ink);
-    margin-bottom: 40px;
-    max-width: 1100px;
-  }
-
-  .hero-headline em {
-    font-family: var(--serif);
-    font-style: italic;
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    color: var(--accent);
   }
 
   .hero-grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 80px;
-    margin-top: 80px;
-    align-items: end;
+    grid-template-columns: 0.85fr 1fr;
+    gap: 64px;
+    align-items: stretch;
   }
 
-  .hero-lede {
-    font-size: 20px;
-    line-height: 1.5;
-    color: var(--ink-soft);
-    max-width: 520px;
-    font-weight: 400;
+  .hero-right {
+    display: flex;
+    flex-direction: column;
   }
 
-  .hero-lede em {
+  .hero-portrait {
+    max-width: 420px;
+    width: 100%;
+    align-self: stretch;
+    position: relative;
+    overflow: hidden;
+    background: rgba(20, 81, 63, 0.06);
+  }
+
+  .hero-portrait img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+    display: block;
+    filter: saturate(0.95);
+  }
+
+  .hero-mark {
     font-family: var(--serif);
     font-style: italic;
+    font-size: clamp(56px, 7vw, 96px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--accent);
+    margin-bottom: 32px;
+  }
+
+  .hero-title {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: clamp(24px, 2.4vw, 32px);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
     color: var(--ink);
+    max-width: 540px;
+    margin-bottom: 48px;
   }
 
-  .currently-card {
+  .hero-title em {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+
+  .hero-meta {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
     border-top: 1px solid var(--rule-strong);
-    padding-top: 24px;
   }
 
-  .kv-row {
+  .hero-meta > div {
     display: grid;
     grid-template-columns: 110px 1fr;
-    gap: 16px;
-    padding: 14px 0;
+    gap: 20px;
+    padding: 16px 0;
     border-bottom: 1px solid var(--rule);
     align-items: baseline;
   }
+  .hero-meta > div:last-child { border-bottom: none; }
 
-  .kv-row:last-child { border-bottom: none; }
-
-  .kv-key {
+  .hero-meta dt {
     font-family: var(--mono);
     font-size: 10px;
-    font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--muted);
+    margin-bottom: 8px;
   }
 
-  .kv-val {
+  .hero-meta dd {
     font-size: 15px;
     color: var(--ink);
     font-weight: 500;
   }
 
-  .kv-val .sub {
+  .hero-meta dd .sub {
     color: var(--muted);
     font-weight: 400;
     font-size: 13px;
@@ -279,400 +184,278 @@
     margin-top: 2px;
   }
 
-  /* ============ SECTION HEADERS ============ */
+  /* ============ SECTIONS ============ */
   section {
-    padding: 100px 0;
-    position: relative;
+    padding: 14vh 0;
   }
 
-  .section-label {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    font-family: var(--mono);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 48px;
-  }
-
-  .section-label .num {
-    color: var(--accent);
-  }
-
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--rule);
-  }
-
-  .section-title {
-    font-family: var(--sans);
-    font-weight: 500;
-    font-size: clamp(36px, 5vw, 64px);
-    line-height: 1.02;
-    letter-spacing: -0.025em;
-    color: var(--ink);
-    margin-bottom: 56px;
-    max-width: 900px;
-  }
-
-  .section-title em {
-    font-family: var(--serif);
-    font-style: italic;
-    font-weight: 400;
-    color: var(--accent);
-  }
-
-  /* ============ ABOUT ============ */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-  }
-
-  .about-prose p {
-    font-size: 18px;
-    line-height: 1.55;
-    color: var(--ink-soft);
-    margin-bottom: 20px;
-    max-width: 520px;
-  }
-
-  .about-prose p strong {
-    color: var(--ink);
-    font-weight: 500;
-  }
-
-  .stat-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--rule-strong);
-    border: 1px solid var(--rule-strong);
-  }
-
-  .stat {
-    background: var(--bg);
-    padding: 28px 24px;
-  }
-
-  .stat-num {
-    font-family: var(--sans);
-    font-weight: 500;
-    font-size: 44px;
-    letter-spacing: -0.03em;
-    line-height: 1;
-    color: var(--ink);
-    margin-bottom: 8px;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .stat-num em {
-    font-family: var(--serif);
-    font-style: italic;
-    font-weight: 400;
-    color: var(--accent);
-  }
-
-  .stat-label {
+  .section-eyebrow {
     font-family: var(--mono);
     font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--muted);
-    line-height: 1.4;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--ink);
   }
 
   /* ============ WORK ============ */
-  .work-list {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  .work-section {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .work-intro {
+    font-family: var(--sans);
+    font-style: normal;
+    font-weight: 500;
+    font-size: clamp(28px, 3.6vw, 44px);
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    max-width: 640px;
+    margin-bottom: 96px;
+    text-align: left;
+  }
+
+  .work-intro em {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+    font-size: 1.4em;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
   }
 
   .project {
-    background: var(--bg-elev);
-    border: 1px solid var(--rule);
-    padding: 40px;
     display: grid;
-    grid-template-columns: 80px 1.3fr 1fr;
-    gap: 40px;
-    transition: border-color 0.3s ease, transform 0.3s ease;
-    position: relative;
+    grid-template-columns: 80px 1fr;
+    gap: 48px;
+    padding: 56px 0;
+    border-top: 1px solid var(--rule-strong);
+    align-items: start;
   }
 
-  .project:hover {
-    border-color: var(--ink);
+  .project:last-child {
+    border-bottom: 1px solid var(--rule-strong);
   }
 
   .project-num {
     font-family: var(--mono);
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.08em;
     color: var(--muted);
-    letter-spacing: 0.05em;
+    padding-top: 8px;
   }
 
-  .project-content h3 {
+  .project-body {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .project-title {
     font-family: var(--sans);
     font-weight: 500;
-    font-size: 32px;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-    margin-bottom: 8px;
+    font-size: clamp(40px, 5.5vw, 64px);
+    line-height: 1;
+    letter-spacing: -0.03em;
     color: var(--ink);
+    margin-bottom: 16px;
   }
 
-  .project-tagline {
+  .project-tag {
     font-family: var(--serif);
     font-style: italic;
-    font-size: 18px;
-    color: var(--accent);
-    margin-bottom: 20px;
+    font-size: 22px;
     line-height: 1.3;
-  }
-
-  .project-desc {
-    font-size: 15px;
-    line-height: 1.55;
-    color: var(--ink-soft);
+    color: var(--accent);
     margin-bottom: 24px;
   }
 
-  .chip-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 28px;
+  .project-desc {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 540px;
+    margin-bottom: 32px;
   }
 
-  .chip {
-    font-family: var(--mono);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    padding: 5px 10px;
-    background: var(--accent-tint);
-    color: var(--accent);
-    border-radius: 2px;
-  }
-
-  .project-links {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  .link {
+  .project-cta {
     font-family: var(--mono);
     font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--ink);
     border-bottom: 1px solid var(--ink);
-    padding-bottom: 2px;
-    transition: color 0.2s ease, border-color 0.2s ease;
-  }
-
-  .link:hover {
-    color: var(--accent);
-    border-bottom-color: var(--accent);
-  }
-
-  .link.muted {
-    color: var(--muted);
-    border-bottom-color: var(--rule-strong);
-    cursor: not-allowed;
-  }
-
-  .project-visual {
-    background: var(--bg);
-    border: 1px solid var(--rule);
-    border-radius: 4px;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 220px;
-    overflow: hidden;
-    position: relative;
-  }
-
-  /* Health Canopy mock */
-  .mock-canopy {
-    width: 100%;
-    font-family: var(--mono);
-    font-size: 10px;
-  }
-
-  .mock-canopy .row {
-    display: flex;
+    padding-bottom: 3px;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 10px;
+    transition: color 0.2s ease, border-color 0.2s ease, gap 0.2s ease;
+  }
+
+  .project-cta:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    gap: 12px;
+  }
+
+  .project-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 32px;
+    border-left: 1px solid var(--rule);
+  }
+
+  .pm-row dt {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .pm-row dd {
+    font-size: 14px;
+    color: var(--ink);
+  }
+
+  /* ============ ABOUT ============ */
+  .about-section {
     border-bottom: 1px solid var(--rule);
   }
 
-  .mock-canopy .row:last-child { border: none; }
-
-  .mock-canopy .sku {
-    color: var(--muted);
-    width: 56px;
-    flex-shrink: 0;
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 80px;
+    gap: 96px;
+    align-items: start;
   }
 
-  .mock-canopy .bar-wrap {
-    flex: 1;
-    height: 4px;
-    background: var(--rule);
-    border-radius: 2px;
-    overflow: hidden;
+  .about-prose {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
   }
 
-  .mock-canopy .bar {
-    height: 100%;
-    background: var(--accent);
-    border-radius: 2px;
-  }
-
-  .mock-canopy .bar.warn { background: #C97A2C; }
-  .mock-canopy .bar.crit { background: #B53D2E; }
-
-  .mock-canopy .pct {
-    width: 36px;
-    text-align: right;
+  .about-prose p {
+    font-family: var(--sans);
+    font-size: 19px;
+    line-height: 1.7;
     color: var(--ink);
-    font-weight: 500;
-    font-variant-numeric: tabular-nums;
+    margin-bottom: 28px;
+    font-weight: 400;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
   }
 
-  .mock-canopy-header {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 12px;
-    margin-bottom: 4px;
-    border-bottom: 1px solid var(--rule-strong);
-    font-size: 9px;
+  .about-prose p em {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--accent);
+    font-size: 1.45em;
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+  }
+
+  .about-prose p:last-child {
+    font-family: var(--sans);
+    font-size: 19px;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .about-side dl {
+    border-top: 1px solid var(--rule-strong);
+  }
+
+  .about-side dl > div {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 24px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+
+  .about-side dt {
+    font-family: var(--mono);
+    font-size: 10px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--muted);
   }
 
-  /* Provider Connect mock */
-  .mock-pc {
-    width: 100%;
-    font-family: var(--mono);
-    font-size: 10px;
-  }
-
-  .mock-pc-card {
-    background: var(--bg-elev);
-    border: 1px solid var(--rule);
-    padding: 14px;
-    margin-bottom: 8px;
-    border-radius: 3px;
-  }
-
-  .mock-pc-card.locked {
-    opacity: 0.4;
-    background: repeating-linear-gradient(45deg, var(--bg-elev), var(--bg-elev) 4px, var(--rule) 4px, var(--rule) 5px);
-  }
-
-  .mock-pc-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-  }
-
-  .mock-pc-title {
-    font-size: 11px;
+  .about-side dd {
+    font-size: 15px;
     color: var(--ink);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .mock-pc-role {
-    font-size: 8px;
-    background: var(--accent);
-    color: var(--bg);
-    padding: 2px 6px;
-    border-radius: 2px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  .mock-pc-role.locked-role {
-    background: var(--muted);
-  }
-
-  .mock-pc-content {
-    font-size: 9px;
-    color: var(--ink-soft);
     line-height: 1.5;
   }
 
-  .mock-pc-content .redacted {
-    background: var(--ink-soft);
-    color: var(--ink-soft);
-    border-radius: 1px;
-    user-select: none;
+  .about-side dd .org {
+    color: var(--accent);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 17px;
   }
 
   /* ============ EXPERIENCE ============ */
+  .exp-section {
+    border-bottom: 1px solid var(--rule);
+  }
+
   .exp-list {
-    display: flex;
-    flex-direction: column;
+    border-top: 1px solid var(--rule-strong);
   }
 
   .exp-row {
     display: grid;
-    grid-template-columns: 200px 1fr 200px;
+    grid-template-columns: 160px 1fr 180px;
     gap: 32px;
-    padding: 28px 0;
-    border-top: 1px solid var(--rule-strong);
+    padding: 26px 0;
+    border-bottom: 1px solid var(--rule);
     align-items: baseline;
-    transition: padding 0.25s ease;
-  }
-
-  .exp-row:hover {
-    padding-left: 16px;
-  }
-
-  .exp-row:last-child {
-    border-bottom: 1px solid var(--rule-strong);
   }
 
   .exp-date {
     font-family: var(--mono);
     font-size: 11px;
-    font-weight: 500;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--muted);
   }
 
-  .exp-main h4 {
-    font-size: 22px;
+  .exp-org {
+    font-family: var(--sans);
+    font-size: 19px;
     font-weight: 500;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.01em;
     color: var(--ink);
-    margin-bottom: 4px;
+    margin-bottom: 2px;
   }
 
   .exp-role {
     font-family: var(--serif);
     font-style: italic;
-    color: var(--accent);
     font-size: 17px;
+    color: var(--accent);
+    line-height: 1.3;
   }
 
   .exp-loc {
@@ -684,37 +467,28 @@
   }
 
   /* ============ CONTACT ============ */
-  .contact {
-    border-top: 1px solid var(--rule-strong);
-    padding: 120px 0 60px;
+  .contact-section {
+    padding: 18vh 0 14vh;
   }
 
   .contact-headline {
-    font-family: var(--sans);
-    font-weight: 500;
-    font-size: clamp(40px, 6.5vw, 88px);
-    line-height: 1;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(36px, 6vw, 88px);
+    line-height: 0.96;
     letter-spacing: -0.03em;
-    margin-bottom: 56px;
+    color: var(--ink);
+    margin-bottom: 72px;
     max-width: 1000px;
   }
 
-  .contact-headline em {
-    font-family: var(--serif);
-    font-style: italic;
-    font-weight: 400;
-    color: var(--accent);
-  }
-
   .contact-headline a {
-    border-bottom: 3px solid var(--ink);
-    transition: color 0.2s ease, border-color 0.2s ease;
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+    transition: opacity 0.2s ease;
   }
 
-  .contact-headline a:hover {
-    color: var(--accent);
-    border-bottom-color: var(--accent);
-  }
+  .contact-headline a:hover { opacity: 0.7; }
 
   .contact-grid {
     display: grid;
@@ -724,27 +498,26 @@
     padding-top: 32px;
   }
 
-  .contact-item .label {
+  .ci-label {
     font-family: var(--mono);
     font-size: 10px;
-    font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--muted);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
 
-  .contact-item .value {
-    font-size: 16px;
+  .ci-value {
+    font-size: 15px;
     color: var(--ink);
   }
 
-  .contact-item .value a {
+  .ci-value a {
     border-bottom: 1px solid var(--rule-strong);
-    transition: border-color 0.2s ease, color 0.2s ease;
+    transition: color 0.2s ease, border-color 0.2s ease;
   }
 
-  .contact-item .value a:hover {
+  .ci-value a:hover {
     color: var(--accent);
     border-bottom-color: var(--accent);
   }
@@ -756,365 +529,245 @@
   }
 
   .footer-inner {
-    max-width: var(--container);
+    max-width: var(--col);
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 32px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-family: var(--mono);
     font-size: 10px;
-    color: var(--muted);
     letter-spacing: 0.06em;
     text-transform: uppercase;
+    color: var(--muted);
     flex-wrap: wrap;
     gap: 12px;
   }
 
   /* ============ RESPONSIVE ============ */
   @media (max-width: 880px) {
-    .nav-links { gap: 16px; }
-    .nav-links a:not(.nav-cta) { display: none; }
-    .hero { padding: 100px 0 60px; }
-    .hero-grid {
-      grid-template-columns: 1fr;
-      gap: 40px;
-      margin-top: 48px;
+    .wrap, .topbar-inner, .footer-inner { padding: 0 20px; }
+    .topbar-right { gap: 18px; }
+    .hero { padding: 64px 0 80px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-portrait { max-width: 480px; }
+    section { padding: 80px 0; }
+    .work-intro { margin-bottom: 56px; }
+    .project { grid-template-columns: 1fr; gap: 24px; padding: 40px 0; }
+    .project-num { padding-top: 0; }
+    .project-body { grid-template-columns: 1fr; gap: 32px; }
+    .project-meta {
+      padding-left: 0;
+      border-left: none;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 24px 32px;
     }
-    .about-grid { grid-template-columns: 1fr; gap: 48px; }
-    .project {
-      grid-template-columns: 1fr;
-      gap: 24px;
-      padding: 28px;
-    }
-    .project-num { font-size: 11px; }
-    .exp-row {
-      grid-template-columns: 1fr;
-      gap: 6px;
-      padding: 20px 0;
-    }
-    .exp-row:hover { padding-left: 0; }
+    .about-grid { grid-template-columns: 1fr; gap: 56px; }
+    .exp-row { grid-template-columns: 1fr; gap: 6px; padding: 22px 0; }
     .exp-loc { text-align: left; }
     .contact-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
-    .stat-grid { grid-template-columns: 1fr; }
-    section { padding: 64px 0; }
-    .meta-strip { font-size: 9px; }
   }
 
   @media (max-width: 480px) {
     .contact-grid { grid-template-columns: 1fr; }
   }
 
-  /* ============ ANIMATIONS ============ */
-  .fade-up {
+  /* ============ MOTION ============ */
+  .fade {
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeUp 0.9s cubic-bezier(0.2, 0.65, 0.3, 1) forwards;
+    transition: opacity 1.1s cubic-bezier(0.2, 0.65, 0.3, 1),
+                transform 1.1s cubic-bezier(0.2, 0.65, 0.3, 1);
   }
+  .fade.in { opacity: 1; transform: translateY(0); }
 
-  @keyframes fadeUp {
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .delay-1 { animation-delay: 0.1s; }
-  .delay-2 { animation-delay: 0.2s; }
-  .delay-3 { animation-delay: 0.35s; }
-  .delay-4 { animation-delay: 0.5s; }
-
-  .reveal {
+  .fade-now {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.8s cubic-bezier(0.2, 0.65, 0.3, 1), transform 0.8s cubic-bezier(0.2, 0.65, 0.3, 1);
+    transform: translateY(16px);
+    animation: fadeNow 1.2s cubic-bezier(0.2, 0.65, 0.3, 1) forwards;
   }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .d1 { animation-delay: 0.1s; }
+  .d2 { animation-delay: 0.25s; }
+  .d3 { animation-delay: 0.4s; }
+  @keyframes fadeNow { to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
 <body>
 
-<!-- ================ NAV ================ -->
-<nav>
-  <div class="nav-inner">
-    <a href="#top" class="nav-logo">A. Susanto</a>
-    <div class="nav-links">
-      <a href="#about">About</a>
+<!-- ================ TOPBAR ================ -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <span class="topbar-name">Arielle Susanto</span>
+    <div class="topbar-right">
       <a href="#work">Work</a>
-      <a href="#experience">Experience</a>
+      <a href="#about">About</a>
       <a href="#contact">Contact</a>
-      <a href="./Arielle_Susanto_Resume.pdf" class="nav-cta" target="_blank">Resume ↗</a>
     </div>
   </div>
-</nav>
+</header>
 
 <!-- ================ HERO ================ -->
-<section class="hero" id="top">
-  <div class="container">
-    <div class="meta-strip fade-up">
-      <span class="status-pill">
-        <span class="status-dot"></span>
-        Available for Summer 2026 internships
-      </span>
-      <span>Berkeley, California</span>
-      <span>Updated April 2026</span>
-    </div>
-
-    <h1 class="hero-headline fade-up delay-1">
-      I build <em>AI tools</em> for<br>healthcare operations.
-    </h1>
-
+<section class="hero">
+  <div class="wrap">
     <div class="hero-grid">
-      <p class="hero-lede fade-up delay-2">
-        MPH candidate at UC Berkeley working at the <em>intersection of healthcare and AI</em>. I prototype agentic systems and operational platforms that reduce administrative burden for clinicians and health systems.
-      </p>
+      <figure class="hero-portrait fade-now">
+        <img src="assets/arielle.jpg" alt="Arielle Susanto">
+      </figure>
 
-      <div class="currently-card fade-up delay-3">
-        <div class="kv-row">
-          <span class="kv-key">Currently</span>
-          <span class="kv-val">
-            Blue Shield of California
-            <span class="sub">Graduate Consultant — Agentic AI Strategy</span>
-          </span>
-        </div>
-        <div class="kv-row">
-          <span class="kv-key">Studying</span>
-          <span class="kv-val">
-            UC Berkeley — MPH
-            <span class="sub">Health Policy & Management · 2027</span>
-          </span>
-        </div>
-        <div class="kv-row">
-          <span class="kv-key">Focus</span>
-          <span class="kv-val">
-            Payer ops · Care coordination · Agentic AI
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      <div class="hero-right">
+        <div class="hero-mark fade-now d1">Healthcare<br>× <em style="font-style:italic;">AI.</em></div>
 
-<!-- ================ ABOUT ================ -->
-<section id="about">
-  <div class="container">
-    <div class="section-label reveal">
-      <span class="num">01</span><span>About</span>
-    </div>
+        <h1 class="hero-title fade-now d2">
+          I build <em style="font-family:var(--serif); font-style:italic; color:var(--accent); font-size:1.35em; line-height:0.9;">AI systems</em> for healthcare operations — improving workflows and reducing inefficiency.
+        </h1>
 
-    <h2 class="section-title reveal">
-      Healthcare's <em>$500B admin problem</em><br>is the one I want to solve.
-    </h2>
-
-    <div class="about-grid">
-      <div class="about-prose reveal">
-        <p>
-          I move fluently between healthcare strategy and hands-on prototyping. <strong>I read the operational reality of a workflow first</strong> — what clinicians actually do, where information breaks down, what system constraints get in the way — then design around it.
-        </p>
-        <p>
-          My current work spans <strong>payer-side AI strategy</strong> at Blue Shield of California, <strong>care delivery evaluation</strong> at the Institute on Aging, and independent prototyping of AI tools for hospital operations.
-        </p>
-        <p>
-          Before grad school: undergrad public health at Berkeley, with a global poverty minor. Originally from Indonesia, where I worked on JCI accreditation at Siloam Cancer Hospital.
-        </p>
-      </div>
-
-      <div class="stat-grid reveal">
-        <div class="stat">
-          <div class="stat-num">2<em>x</em></div>
-          <div class="stat-label">Active healthcare<br>engagements</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">2</div>
-          <div class="stat-label">Working AI<br>prototypes shipped</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">10<span style="color: var(--muted)">+</span></div>
-          <div class="stat-label">AI use cases<br>evaluated for payer ops</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">4</div>
-          <div class="stat-label">Healthcare orgs<br>worked with</div>
-        </div>
+        <dl class="hero-meta fade-now d3">
+          <div>
+            <dt>Studying</dt>
+            <dd>UC Berkeley — MPH<span class="sub">Health Policy &amp; Management, 2027</span></dd>
+          </div>
+          <div>
+            <dt>Based in</dt>
+            <dd>Berkeley, California</dd>
+          </div>
+        </dl>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ================ WORK ================ -->
-<section id="work">
-  <div class="container">
-    <div class="section-label reveal">
-      <span class="num">02</span><span>Selected Work</span>
-    </div>
+<section class="work-section" id="work">
+  <div class="wrap">
+    <p class="work-intro fade">
+      <em>$500B</em> is wasted on U.S. healthcare administration every year. I build tools to drive that number down.
+    </p>
 
-    <h2 class="section-title reveal">
-      Prototypes built to test <em>real operational problems</em>.
-    </h2>
-
-    <div class="work-list">
-
-      <!-- PROJECT 01 -->
-      <article class="project reveal">
-        <div class="project-num">PRJ / 01</div>
-        <div class="project-content">
-          <h3>Health Canopy</h3>
-          <div class="project-tagline">AI platform for hospital inventory optimization</div>
+    <article class="project fade">
+      <div class="project-num">01 / Prototype</div>
+      <div class="project-body">
+        <div>
+          <h3 class="project-title">Health Canopy</h3>
+          <p class="project-tag">AI platform for hospital inventory optimization</p>
           <p class="project-desc">
-            End-to-end AI prototype for hospital supply chain operations: predictive analytics, real-time inventory visibility, and automated reorder recommendations. Built to address waste and stockout patterns that cost health systems millions annually.
+            End-to-end prototype for hospital supply chain operations: predictive analytics, real-time inventory visibility, and automated reorder recommendations — with Joint Commission readiness baked in (expiry tracking, par-level audits, recall surfacing) so compliance isn't a separate workstream.
           </p>
-          <div class="chip-row">
-            <span class="chip">Predictive Analytics</span>
-            <span class="chip">Supply Chain</span>
-            <span class="chip">Hospital Ops</span>
-            <span class="chip">AI Agents</span>
-          </div>
-          <div class="project-links">
-            <a href="#" class="link">Live demo →</a>
-            <a href="#" class="link">Case study →</a>
-          </div>
+          <a href="https://health-canopy-three.vercel.app/ai-insights" target="_blank" rel="noopener" class="project-cta">Open project →</a>
         </div>
-        <div class="project-visual" aria-hidden="true">
-          <div class="mock-canopy">
-            <div class="mock-canopy-header">
-              <span>SKU</span><span>STOCK</span>
-            </div>
-            <div class="row">
-              <span class="sku">SAL-09K</span>
-              <div class="bar-wrap"><div class="bar" style="width: 78%"></div></div>
-              <span class="pct">78%</span>
-            </div>
-            <div class="row">
-              <span class="sku">GLV-31N</span>
-              <div class="bar-wrap"><div class="bar warn" style="width: 34%"></div></div>
-              <span class="pct">34%</span>
-            </div>
-            <div class="row">
-              <span class="sku">SYR-10ML</span>
-              <div class="bar-wrap"><div class="bar" style="width: 92%"></div></div>
-              <span class="pct">92%</span>
-            </div>
-            <div class="row">
-              <span class="sku">MSK-N95</span>
-              <div class="bar-wrap"><div class="bar crit" style="width: 12%"></div></div>
-              <span class="pct">12%</span>
-            </div>
-            <div class="row">
-              <span class="sku">CTR-IV</span>
-              <div class="bar-wrap"><div class="bar" style="width: 64%"></div></div>
-              <span class="pct">64%</span>
-            </div>
-            <div class="row">
-              <span class="sku">GAU-04C</span>
-              <div class="bar-wrap"><div class="bar warn" style="width: 41%"></div></div>
-              <span class="pct">41%</span>
-            </div>
-          </div>
-        </div>
-      </article>
+        <dl class="project-meta">
+          <div class="pm-row"><dt>Role</dt><dd>Solo · design + dev</dd></div>
+          <div class="pm-row"><dt>Stack</dt><dd>React · Python · LLM agents</dd></div>
+          <div class="pm-row"><dt>Domain</dt><dd>Hospital supply chain + compliance</dd></div>
+          <div class="pm-row"><dt>Year</dt><dd>2026</dd></div>
+        </dl>
+      </div>
+    </article>
 
-      <!-- PROJECT 02 -->
-      <article class="project reveal">
-        <div class="project-num">PRJ / 02</div>
-        <div class="project-content">
-          <h3>Provider Connect</h3>
-          <div class="project-tagline">Shared patient summary for multidisciplinary care</div>
+    <article class="project fade">
+      <div class="project-num">02 / Prototype</div>
+      <div class="project-body">
+        <div>
+          <h3 class="project-title">Provider Connect</h3>
+          <p class="project-tag">Shared patient summary for multidisciplinary care</p>
           <p class="project-desc">
-            Interactive React prototype giving each practitioner a role-appropriate view of a patient's clinical picture across multidisciplinary care teams. Built around role-based access controls and patient consent — keeping coordination tight without exposing sensitive information unnecessarily.
+            Multidisciplinary care teams often over-share patient information or fragment it across siloed notes. Provider Connect gives each practitioner a role-appropriate view of the same patient's clinical picture — built around role-based access and patient consent, so coordination doesn't come at the cost of exposure.
           </p>
-          <div class="chip-row">
-            <span class="chip">React</span>
-            <span class="chip">RBAC</span>
-            <span class="chip">Care Coordination</span>
-            <span class="chip">Privacy</span>
-          </div>
-          <div class="project-links">
-            <a href="#" class="link">Live demo →</a>
-            <a href="#" class="link">Loom walkthrough →</a>
-          </div>
+          <a href="#" class="project-cta">Open project →</a>
         </div>
-        <div class="project-visual" aria-hidden="true">
-          <div class="mock-pc" style="width: 100%;">
-            <div class="mock-pc-card">
-              <div class="mock-pc-header">
-                <span class="mock-pc-title">Vitals & Triage</span>
-                <span class="mock-pc-role">Nurse</span>
-              </div>
-              <div class="mock-pc-content">
-                BP 128/82 · HR 76 · SpO₂ 98% · Temp 98.4°F
-              </div>
-            </div>
-            <div class="mock-pc-card">
-              <div class="mock-pc-header">
-                <span class="mock-pc-title">Care Plan</span>
-                <span class="mock-pc-role">SW</span>
-              </div>
-              <div class="mock-pc-content">
-                Housing follow-up scheduled · Transport secured for Thu visit
-              </div>
-            </div>
-            <div class="mock-pc-card locked">
-              <div class="mock-pc-header">
-                <span class="mock-pc-title">Mental Health Notes</span>
-                <span class="mock-pc-role locked-role">🔒 PHI</span>
-              </div>
-              <div class="mock-pc-content">
-                <span class="redacted">██████ █████ ████████ ██████ ███ ████ ██████</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
+        <dl class="project-meta">
+          <div class="pm-row"><dt>Role</dt><dd>Solo · design + dev</dd></div>
+          <div class="pm-row"><dt>Stack</dt><dd>React · TypeScript</dd></div>
+          <div class="pm-row"><dt>Domain</dt><dd>Care coordination</dd></div>
+          <div class="pm-row"><dt>Year</dt><dd>2026</dd></div>
+        </dl>
+      </div>
+    </article>
+  </div>
+</section>
 
+<!-- ================ ABOUT ================ -->
+<section class="about-section" id="about">
+  <div class="wrap">
+    <div class="section-eyebrow fade">About</div>
+
+    <div class="about-grid">
+      <div class="about-prose">
+        <p class="fade">
+          I'm <em>Arielle</em>, an MPH candidate at UC Berkeley focused on<br>
+          healthcare operations, strategy, and AI-driven systems design. My interest in healthcare operations started through hands-on experience in hospital safety and accreditation, where I supported Joint Commission International (JCI) compliance efforts and worked across departments to improve processes. Through that work, I saw that many of the biggest challenges in healthcare don't come from clinical care itself, but from the <em>operational systems behind it</em> — fragmented workflows, administrative burden, and inefficiencies that slow everything down.
+        </p>
+        <p class="fade">
+          Since then, I've focused on understanding and identifying bottlenecks<br>
+          within healthcare systems by analyzing existing workflows and how they function in practice. My work centers on continuously learning from current processes and using those insights to design and prototype solutions that reduce operational friction. I actively leverage and stay up to date with emerging technologies, including <em>agent-based AI systems</em>, to push workflows to their highest efficiency and improve how complex systems operate.
+        </p>
+      </div>
+
+      <div class="about-side fade" style="display:none;">
+        <dl>
+          <div>
+            <dt>Now</dt>
+            <dd><span class="org">Blue Shield of California</span><br>Agentic AI strategy, payer side</dd>
+          </div>
+          <div>
+            <dt>Also</dt>
+            <dd><span class="org">Institute on Aging</span><br>ECM program evaluation</dd>
+          </div>
+          <div>
+            <dt>Studying</dt>
+            <dd>UC Berkeley — MPH<br>Health Policy &amp; Management</dd>
+          </div>
+          <div>
+            <dt>Before</dt>
+            <dd>Public Health, UC Berkeley<br>Global Poverty &amp; Practice minor</dd>
+          </div>
+          <div>
+            <dt>From</dt>
+            <dd>Indonesia<br>JCI accreditation, Siloam Cancer Hospital</dd>
+          </div>
+        </dl>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ================ EXPERIENCE ================ -->
-<section id="experience">
-  <div class="container">
-    <div class="section-label reveal">
-      <span class="num">03</span><span>Experience</span>
-    </div>
-
-    <h2 class="section-title reveal">
-      Where I've been <em>doing the work</em>.
-    </h2>
+<section class="exp-section">
+  <div class="wrap">
+    <div class="section-eyebrow fade">Experience</div>
 
     <div class="exp-list">
-      <div class="exp-row reveal">
+      <div class="exp-row fade">
         <div class="exp-date">Feb 2026 — Now</div>
-        <div class="exp-main">
-          <h4>Blue Shield of California</h4>
+        <div>
+          <div class="exp-org">Blue Shield of California</div>
           <div class="exp-role">Graduate Consultant — Agentic AI Strategy</div>
         </div>
         <div class="exp-loc">Oakland, CA</div>
       </div>
-
-      <div class="exp-row reveal">
+      <div class="exp-row fade">
         <div class="exp-date">Feb 2026 — Now</div>
-        <div class="exp-main">
-          <h4>Institute on Aging</h4>
+        <div>
+          <div class="exp-org">Institute on Aging</div>
           <div class="exp-role">Graduate Analyst — ECM Evaluation</div>
         </div>
         <div class="exp-loc">San Francisco, CA</div>
       </div>
-
-      <div class="exp-row reveal">
+      <div class="exp-row fade">
         <div class="exp-date">Mar — Aug 2025</div>
-        <div class="exp-main">
-          <h4>Apte Research Group, UC Berkeley</h4>
+        <div>
+          <div class="exp-org">Apte Research Group, UC Berkeley</div>
           <div class="exp-role">Research Assistant</div>
         </div>
         <div class="exp-loc">Berkeley, CA</div>
       </div>
-
-      <div class="exp-row reveal">
+      <div class="exp-row fade">
         <div class="exp-date">Jun — Aug 2024</div>
-        <div class="exp-main">
-          <h4>Siloam Cancer Hospital</h4>
-          <div class="exp-role">Health & Safety Intern (JCI Accreditation)</div>
+        <div>
+          <div class="exp-org">Siloam Cancer Hospital</div>
+          <div class="exp-role">Health &amp; Safety Intern · JCI Accreditation</div>
         </div>
         <div class="exp-loc">Indonesia</div>
       </div>
@@ -1123,64 +776,54 @@
 </section>
 
 <!-- ================ CONTACT ================ -->
-<section class="contact" id="contact">
-  <div class="container">
-    <div class="section-label reveal">
-      <span class="num">04</span><span>Contact</span>
-    </div>
+<section class="contact-section" id="contact">
+  <div class="wrap">
+    <div class="section-eyebrow fade">Contact</div>
 
-    <h2 class="contact-headline reveal">
-      Building something at the <em>intersection of healthcare and AI</em>?<br>
+    <h2 class="contact-headline fade">
+      Building at the intersection of healthcare and AI?<br>
       <a href="mailto:ariellesusanto@berkeley.edu">Let's talk →</a>
     </h2>
 
-    <div class="contact-grid reveal">
-      <div class="contact-item">
-        <div class="label">Email</div>
-        <div class="value">
-          <a href="mailto:ariellesusanto@berkeley.edu">ariellesusanto@berkeley.edu</a>
-        </div>
+    <div class="contact-grid fade">
+      <div>
+        <div class="ci-label">Email</div>
+        <div class="ci-value"><a href="mailto:ariellesusanto@berkeley.edu">ariellesusanto@berkeley.edu</a></div>
       </div>
-      <div class="contact-item">
-        <div class="label">LinkedIn</div>
-        <div class="value">
-          <a href="https://www.linkedin.com/in/ariellesusanto" target="_blank">/in/ariellesusanto</a>
-        </div>
+      <div>
+        <div class="ci-label">LinkedIn</div>
+        <div class="ci-value"><a href="https://www.linkedin.com/in/ariellesusanto" target="_blank">/in/ariellesusanto</a></div>
       </div>
-      <div class="contact-item">
-        <div class="label">Resume</div>
-        <div class="value">
-          <a href="./Arielle_Susanto_Resume.pdf" target="_blank">Download PDF ↓</a>
-        </div>
+      <div>
+        <div class="ci-label">Resume</div>
+        <div class="ci-value"><a href="./Arielle_Susanto_Resume.pdf" target="_blank">Download PDF ↓</a></div>
       </div>
-      <div class="contact-item">
-        <div class="label">Location</div>
-        <div class="value">Berkeley, California</div>
+      <div>
+        <div class="ci-label">Location</div>
+        <div class="ci-value">Berkeley, California</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================ FOOTER ================ -->
 <footer>
   <div class="footer-inner">
     <span>© 2026 Arielle K. Susanto</span>
-    <span>Designed & built by hand · v1.0</span>
+    <span>Designed &amp; built by hand</span>
   </div>
 </footer>
 
 <script>
-  // Reveal-on-scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  document.querySelectorAll('.fade').forEach((el) => io.observe(el));
 </script>
 
 </body>
