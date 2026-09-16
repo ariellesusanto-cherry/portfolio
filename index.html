@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Arielle Susanto — Healthcare × AI Portfolio</title>
-<meta name="description" content="Arielle Susanto — UC Berkeley MPH candidate (Health Policy & Management) building AI systems for healthcare operations. Portfolio of prototypes including Health Canopy and Provider Connect.">
+<meta name="description" content="Arielle Susanto — UC Berkeley MPH candidate (Health Policy & Management) building AI systems for healthcare operations. Portfolio including Health Canopy, an AI platform for hospital inventory and supply chain operations.">
 <meta name="author" content="Arielle Susanto">
 <meta name="keywords" content="Arielle Susanto, healthcare AI, MPH, UC Berkeley, health policy, healthcare operations, Health Canopy, Provider Connect">
 <link rel="canonical" href="https://ariellesusanto.com/">
@@ -339,6 +339,21 @@
     align-items: center;
     gap: 8px;
     transition: color 0.2s ease, border-color 0.2s ease, gap 0.2s ease;
+  }
+
+  .project-cta-primary {
+    background: var(--accent);
+    color: #fff;
+    border-bottom: none;
+    padding: 10px 18px;
+    border-radius: 2px;
+    font-weight: 500;
+  }
+
+  .project-cta-primary:hover {
+    background: var(--ink);
+    color: #fff;
+    border-bottom-color: transparent;
   }
 
   .project-cta:hover {
@@ -685,7 +700,7 @@
     </p>
 
     <article class="project fade">
-      <div class="project-num">01 / Prototype</div>
+      <div class="project-num">01 / Flagship</div>
       <div class="project-body">
         <div>
           <h3 class="project-title">Health Canopy</h3>
@@ -693,8 +708,9 @@
           <p class="project-desc">
             End-to-end prototype for hospital supply chain operations: predictive analytics, real-time inventory visibility, and automated reorder recommendations, with Joint Commission readiness baked in (expiry tracking, par-level audits, recall surfacing) so compliance isn't a separate workstream.
           </p>
-          <a href="https://health-canopy-three.vercel.app/ai-insights" target="_blank" rel="noopener" class="project-cta">Open project →</a>
-          <a href="https://www.loom.com/share/c847759dd67349b58465ef661641ea86" target="_blank" rel="noopener" class="project-cta" style="margin-left:24px;">Watch demo →</a>
+          <a href="https://www.loom.com/share/c847759dd67349b58465ef661641ea86" target="_blank" rel="noopener" class="project-cta project-cta-primary">▶ Watch the demo</a>
+          <a href="https://healthcanopy.ariellesusanto.com" target="_blank" rel="noopener" class="project-cta" style="margin-left:24px;">Open project →</a>
+          <a href="https://github.com/ariellesusanto-cherry/health-canopy" target="_blank" rel="noopener" class="project-cta" style="margin-left:24px;">Code →</a>
         </div>
         <dl class="project-meta">
           <div class="pm-row"><dt>Role</dt><dd>Solo · design + dev</dd></div>
